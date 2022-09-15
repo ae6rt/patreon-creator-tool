@@ -1,5 +1,5 @@
 Simple Patreon tooling for fetching creator campaign and pledge info.  The tool is by no means
-comprehensive, but it provides something to build on.
+comprehensive but it provides something to build on.
 
 ## Build
 
