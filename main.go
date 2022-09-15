@@ -20,8 +20,6 @@ const (
 
 var (
 	version string
-	tiers   = make(map[string]string, 0)
-	members = make(map[string]member, 0)
 )
 
 type campaign struct {
@@ -106,9 +104,8 @@ func main() {
 	if *getPledges {
 		client := &http.Client{}
 
-		campaign := campaign{}
-
 		// Get campaign
+		campaign := campaign{}
 		{
 			fmt.Fprintln(os.Stderr, "Fetching campaign details")
 			req, err := http.NewRequest("GET", "https://www.patreon.com/api/oauth2/v2/campaigns?include=creator", nil)
@@ -155,9 +152,14 @@ func main() {
 			campaign.userID = campaigns.Data[0].Relationships.Creator.Data.ID
 		}
 
-		// get pledge info
+		// get members
+
 		{
 			fmt.Fprintln(os.Stderr, "Fetching members details")
+
+			tiers := make(map[string]string, 0)
+			members := make(map[string]member, 0)
+
 			pages := 1
 			nextPage := fmt.Sprintf("https://www.patreon.com/api/oauth2/v2/campaigns/%s/members?fields%%5Bmember%%5D=email%%2Cfull_name%%2Cpatron_status%%2Ccurrently_entitled_amount_cents&fields%%5Btier%%5D=title&fields%%5Buser%%5D=email&include=currently_entitled_tiers%%2Cpledge_history%%2Cuser", campaign.id)
 			for nextPage != "" {
