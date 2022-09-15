@@ -1,4 +1,4 @@
-Simple Patreon tooling for fetching creator campaign and pledge info.  The tool is by no means
+Simple Patreon tool based on the Patreon V2 API that fetches creator campaign and pledge info.  The tool is by no means
 comprehensive but it provides something to build on.
 
 ## Build
