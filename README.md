@@ -24,5 +24,5 @@ Richer output is possible with code changes.
 
 ## References
 
-     Patreon API: https://docs.patreon.com/#introduction
-     Register Patreon OAuth clients: https://www.patreon.com/portal/registration/register-clients
+* [Patreon API](https://docs.patreon.com/#introduction)
+* [Register Patreon OAuth clients](https://www.patreon.com/portal/registration/register-clients)
