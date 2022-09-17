@@ -215,11 +215,15 @@ func main() {
 
 					mem := member{}
 					mem.id = m.ID
-					mem.fullName = m.Attributes.FullName
+					mem.fullName = strings.Join(strings.Fields(m.Attributes.FullName), "")
 					mem.email = m.Attributes.Email
 					mem.currentlyEntitledAmountCents = m.Attributes.CurrentlyEntitledAmountCents
 					for _, t := range m.Relationships.CurrentlyEntitledTiers.Data {
 						mem.tierID = append(mem.tierID, t.ID)
+					}
+
+					if mem.fullName == "" {
+						mem.fullName = "_none_"
 					}
 					members[m.ID] = mem
 				}
@@ -236,7 +240,7 @@ func main() {
 				// build entitled tiers
 				var s []string
 				for _, v := range u.tierID {
-					s = append(s, tiers[v])
+					s = append(s, strings.Join(strings.Fields(tiers[v]), ""))
 				}
 				sort.Strings(s)
 
